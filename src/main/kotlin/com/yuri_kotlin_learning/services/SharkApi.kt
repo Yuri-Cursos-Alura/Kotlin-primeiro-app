@@ -1,8 +1,7 @@
-package com.yuri_kotlin_tests.services
+package com.yuri_kotlin_learning.services
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.encodeToJsonElement
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest

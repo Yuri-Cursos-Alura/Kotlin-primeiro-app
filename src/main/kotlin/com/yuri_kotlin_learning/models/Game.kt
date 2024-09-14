@@ -1,6 +1,6 @@
-package com.aluGames.com.yuri_kotlin_tests.models
+package com.yuri_kotlin_learning.models
 
-import com.yuri_kotlin_tests.services.ApiGame
+import com.yuri_kotlin_learning.services.ApiGame
 
 class Game(val title: String, val thumb: String, val description: String) {
     companion object {

@@ -1,9 +1,8 @@
-package com.aluGames.com.yuri_kotlin_tests
+package com.yuri_kotlin_learning
 
-import com.aluGames.com.yuri_kotlin_tests.models.Game
-import com.yuri_kotlin_tests.services.SharkApi
-import kotlinx.serialization.json.Json
-import java.util.Scanner
+import com.yuri_kotlin_learning.models.Game
+import com.yuri_kotlin_learning.services.SharkApi
+import java.util.*
 
 object Util {
     val reading = Scanner(System.`in`)
