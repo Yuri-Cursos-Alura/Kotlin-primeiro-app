@@ -1,9 +1,9 @@
 package com.aluGames
 
+import com.aluGames.models.ApiGame
 import com.aluGames.models.Game
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -37,21 +37,40 @@ fun main() {
 
     val text: String = response?.body() ?: return
 
-    var game: Game? = null
+    val apiGame: Result<ApiGame> = runCatching { Util.json.decodeFromString<ApiGame>(text) }
 
-    try {
-        game = Util.json.decodeFromString<Game>(text)
-    }
-    catch (e: Exception) {
-        when(e) {
+    apiGame.onFailure {
+        when(it) {
             is SerializationException -> println("Valor retornado não era um jogo, provavelmente não existe: $text")
             is IllegalArgumentException -> println("Erro ao decodificar o json em um jogo: $text")
-            else -> println("Erro desconhecido: $e")
+            else -> println("Erro desconhecido: $it")
         }
 
         return
     }
 
-    println(game)
+    apiGame.onSuccess {
+        println(it)
+
+        println("Digite uma descrição: ")
+        val description = Util.reading.nextLine()
+
+        val game = Game(it.info.title, it.info.thumb, description)
+
+        println("Jogo final: $game")
+    }
+
+//    try {
+//        game = Util.json.decodeFromString<Game>(text)
+//    }
+//    catch (e: Exception) {
+//        when(e) {
+//            is SerializationException -> println("Valor retornado não era um jogo, provavelmente não existe: $text")
+//            is IllegalArgumentException -> println("Erro ao decodificar o json em um jogo: $text")
+//            else -> println("Erro desconhecido: $e")
+//        }
+//
+//        return
+//    }
 }
 

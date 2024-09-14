@@ -4,26 +4,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Game {
-    var info: Info = Info()
-
-    override fun toString(): String {
-        return """
-            Info: 
-            $info
-        """.trimIndent()
-    }
-}
-
+data class ApiGame(val info: ApiInfo);
 @Serializable
-class Info {
-    var title: String = ""
-    var thumb: String = ""
+data class ApiInfo(val title: String, val thumb: String);
 
+class Game(val title: String, val thumb: String, val description: String) {
     override fun toString(): String {
-        return """
-            Title: $title
-            Thumb: $thumb
-        """.trimIndent()
+        return "Game(title='$title', thumb='$thumb', description='$description')"
     }
 }
