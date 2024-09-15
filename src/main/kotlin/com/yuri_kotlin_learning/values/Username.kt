@@ -15,6 +15,6 @@ value class Username(val value: String) {
 }
 
 sealed class UsernameValidationException(message: String) : Exception(message) {
-    class SmallException(message: String) : UsernameValidationException(message);
-    class BlankException(message: String) : UsernameValidationException(message);
+    class SmallException(message: String) : UsernameValidationException(message)
+    class BlankException(message: String) : UsernameValidationException(message)
 }
