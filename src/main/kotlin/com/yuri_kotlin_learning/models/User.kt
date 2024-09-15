@@ -5,6 +5,11 @@ import com.yuri_kotlin_learning.values.Email
 import com.yuri_kotlin_learning.values.Username
 import java.util.*
 
-data class User(val name: Username, val email: Email, val dateOfBirth: Birthday) {
+data class User(
+    var name: Username,
+    var email: Email,
+    var dateOfBirth: Birthday,
+    var games: MutableList<Game> = mutableListOf()
+) {
     val id: UUID = UUID.randomUUID()
 }
