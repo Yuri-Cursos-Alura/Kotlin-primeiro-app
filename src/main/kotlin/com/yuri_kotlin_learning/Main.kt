@@ -1,7 +1,12 @@
 package com.yuri_kotlin_learning
 
+import com.yuri_kotlin_learning.values.Email
 import com.yuri_kotlin_learning.models.Game
+import com.yuri_kotlin_learning.models.User
 import com.yuri_kotlin_learning.services.SharkApi
+import com.yuri_kotlin_learning.values.Birthday
+import com.yuri_kotlin_learning.values.Username
+import java.time.LocalDate
 import java.util.*
 
 object Util {
@@ -9,6 +14,13 @@ object Util {
 }
 
 fun main() {
+    val dateOfBirth = Birthday(LocalDate.of(2003, 12, 31))
+    val email = Email("yurialmirp@gmail.com")
+    val username = Username("Yuri Almir Pinto")
+
+    val user = User(name = username, email = email, dateOfBirth = dateOfBirth)
+    println(user)
+
     println("Digite o id do jogo: ")
     val id = Util.reading.nextLine()
 
